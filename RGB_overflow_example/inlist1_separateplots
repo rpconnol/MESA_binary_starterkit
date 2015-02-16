@@ -1,0 +1,179 @@
+
+! inlist_test_rlo
+
+
+
+&star_job
+
+      !mesa_dir = ''
+      show_log_description_at_start = .false.
+
+      load_saved_model = .true.
+      saved_model_name = '1.5M_beginRGB.mod'
+
+      pgstar_flag = .true.
+
+/ ! end of star_job namelist
+
+
+
+&controls
+
+      extra_terminal_output_file = 'log1' 
+      photo_directory = 'photos1'
+      log_directory = 'LOGS1'
+
+      profile_interval = 50
+      history_interval = 1
+      terminal_cnt = 1
+      write_header_frequency = 10
+      
+      
+      varcontrol_target = 1d-3
+
+/ ! end of controls namelist
+
+
+&pgstar
+
+   ! binary parameters and star mdot + radius to see overflow
+
+      History_Panels1_win_flag = .true.
+      History_Panels1_win_width = 7
+      History_Panels1_win_aspect_ratio = 1.0 ! aspect_ratio = height/width
+      
+      History_Panels1_title = ''
+      History_Panels1_num_panels = 2
+      
+      History_Panels1_yaxis_name(1) = 'period_days'
+      History_Panels1_other_yaxis_name(1) = 'binary_separation' 
+      History_Panels1_yaxis_name(2) = 'log_abs_mdot'   ! 'lg_mstar_dot_1' 
+      History_Panels1_other_yaxis_name(2) = 'log_R' 
+      
+      History_Panels1_ymin(2) = -12d0
+      History_Panels1_ymax(2) = -6d0
+
+
+      
+   ! donor HR diagram and composition
+
+      Grid5_win_flag = .true. 		
+      Grid5_file_flag = .false.
+
+	! TRho (not used)
+
+      TRho_Profile_win_width = 6
+      TRho_Profile_win_aspect_ratio = 0.75
+
+      TRho_Profile_xmin = -5.2
+      TRho_Profile_xmax = 8.2
+      
+      TRho_Profile_xleft = 0.10
+      TRho_Profile_xright = 0.95
+      TRho_Profile_ybot = 0.10
+      TRho_Profile_ytop = 0.90
+      TRho_Profile_txt_scale = 1.0
+      TRho_Profile_title = 'T-Rho Profile'
+      
+      
+	! HR
+
+      HR_win_width = 6
+      HR_win_aspect_ratio = 1 ! aspect_ratio = height/width
+ 
+      HR_xleft = 0.15
+      HR_xright = 0.95
+      HR_ybot = 0.10      
+      HR_ytop = 0.9
+      HR_txt_scale = 1.0
+      HR_title = 'HR'
+      
+
+	! Text summary
+
+      Text_Summary5_win_width = 6
+      Text_Summary5_win_aspect_ratio = 0.2 ! aspect_ratio = height/width
+ 
+      Text_Summary5_xleft = 0.00
+      Text_Summary5_xright = 0.98
+      Text_Summary5_ybot = 0.08
+      Text_Summary5_ytop = 0.98
+      Text_Summary5_txt_scale = 1.0
+      Text_Summary5_title = ''      
+
+      Text_Summary5_num_rows = 2 
+      Text_Summary5_num_cols = 1  
+      Text_Summary5_name(1,1) = 'star_mass'
+      Text_Summary5_name(2,1) = 'radius'
+      
+ 
+	! Big grid
+         
+         Grid5_win_width = 13 !8
+         Grid5_win_aspect_ratio = 0.5 ! aspect_ratio = height/width
+         
+         Grid5_xleft = 0.12 ! fraction of full window width for margin on left
+         Grid5_xright = 0.95 ! fraction of full window width for margin on right
+         Grid5_ybot = 0.08 ! fraction of full window width for margin on bottom
+         Grid5_ytop = 0.92 ! fraction of full window width for margin on top
+         Grid5_title = ''
+         
+         ! set default
+         Grid5_num_cols = 2 ! divide plotting region into this many equal width cols
+         Grid5_num_rows = 1 ! divide plotting region into this many equal height rows
+         Grid5_num_plots = 2 ! <= 10
+         
+         Grid5_plot_name(1) = 'HR'
+         Grid5_plot_row(1) = 1 ! number from 1 at top
+         Grid5_plot_rowspan(1) = 1 ! plot spans this number of rows
+         Grid5_plot_col(1) = 1 ! number from 1 at left
+         Grid5_plot_colspan(1) = 1 ! plot spans this number of columns 
+         Grid5_plot_pad_left(1) = 0.0 ! fraction of full window width for padding on left
+         Grid5_plot_pad_right(1) = 0.05 ! fraction of full window width for padding on right
+         Grid5_plot_pad_top(1) = 0.05 ! fraction of full window height for padding at top
+         Grid5_plot_pad_bot(1) = 0.05 ! fraction of full window height for padding at bottom
+         Grid5_txt_scale_factor(1) = 1.0 ! multiply txt_scale for subplot by this
+         
+         Grid5_plot_name(2) = 'Abundance'
+         Grid5_plot_row(2) = 1 ! number from 1 at top
+         Grid5_plot_rowspan(2) = 1 ! plot spans this number of rows
+         Grid5_plot_col(2) = 2 ! number from 1 at left
+         Grid5_plot_colspan(2) = 1 ! plot spans this number of columns 
+         Grid5_plot_pad_left(2) = 0.08 ! fraction of full window width for padding on left
+         Grid5_plot_pad_right(2) = 0.0 ! fraction of full window width for padding on right
+         Grid5_plot_pad_top(2) = 0.05 ! fraction of full window height for padding at top
+         Grid5_plot_pad_bot(2) = 0.05 ! fraction of full window height for padding at bottom
+         Grid5_txt_scale_factor(2) = 1.0 ! multiply txt_scale for subplot by this
+
+         ! file output
+         Grid5_file_dir = './png'
+         Grid5_file_prefix = 'grid5_'
+         Grid5_file_cnt = 10 ! output when mod(model_number,Grid5_file_cnt)==0
+         Grid5_file_width = -1 ! (inches) negative means use same value as for window
+         Grid5_file_aspect_ratio = -1 ! negative means use same value as for window
+
+
+
+
+
+
+
+
+      History_Track1_win_flag = .false.
+      History_Track1_title = 'P vs t'
+      History_Track1_xname = 'age'
+      History_Track1_yname = 'period_days'
+      History_Track1_xaxis_label = 't (years)'
+      History_Track1_yaxis_label = 'P (days)'
+      History_Track1_log_xaxis = .false. ! show log10 of abs value
+      History_Track1_log_yaxis = .true. ! show log10 of abs value
+      History_Track1_reverse_xaxis = .false.
+
+      
+      History_Track2_win_flag = .false. 
+      History_Track2_xname = 'model_number'
+      History_Track2_yname = 'log_abs_mdot'
+      History_Track2_ymin = -12d0
+      !History_Track2_ymax = -6d0
+      
+/ ! end of pgstar namelist

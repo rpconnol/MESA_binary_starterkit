@@ -1,0 +1,41 @@
+
+&star_job
+  pgstar_flag = .true.
+
+  load_saved_model = .true.
+  saved_model_name = '5M_MS.mod'
+
+  ! Allows you to get a good look at the plots before the run ends. You can also
+  ! opt to save pgstar plots by editing the provided inlist_pgstar.
+  pause_before_terminate = .true.
+
+  ! Make sure initial timesteps aren't too short!
+  ! Ensure you have at least 100 timesteps to gain/lose 1% of initial mass
+  years_for_initial_dt = ??? !!!! FILL THIS IN !!!!
+  limit_initial_dt = .true.
+
+/ ! end of star_job namelist
+
+&controls
+  initial_mass = 5.00
+
+  ! Name a sensible LOGS directory, or delete this line to use default
+  log_directory = 'LOGS_???' !!!! UPDATE THIS !!!!
+
+  ! Set up a stopping condition where the run terminates when the mass has
+  ! changed by 1%. What you choose depends on if you are gaining or losing mass
+  DELETE_THIS_COMMAND_IT_ISNT_REAL = .MAKE_A_STOPPING_CONDITION.
+
+  ! Select your mass change rate
+  mass_change = ??? !!!! FILL THIS IN !!!!
+
+  ! This turns off compositional changes due to burning, essentially freezing
+  ! the star in time. We do this to isolate changes due to normal evolution.
+  dxdt_nuc_factor = 0
+
+  ! Again, make sure timesteps aren't too big. Ensure at least 100 timesteps
+  ! occur before the run terminates
+  max_years_for_timestep = ??? !!!! FILL THIS IN !!!!
+
+
+/ ! end of controls namelist

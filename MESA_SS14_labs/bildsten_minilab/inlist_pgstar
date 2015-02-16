@@ -1,0 +1,146 @@
+&pgstar
+
+  ! MESA uses PGPLOT for live plotting and gives the user a tremendous
+  ! amount of control of the presentation of the information.
+
+  ! show HR diagram
+  ! this plots the history of L,Teff over many timesteps
+    HR_win_flag = .false.
+
+  ! set static plot bounds
+    HR_logT_min = 3.5
+    HR_logT_max = 4.6
+    HR_logL_min = 2.0
+    HR_logL_max = 6.0
+
+  ! set window size (aspect_ratio = height/width)
+    HR_win_width = 6
+    HR_win_aspect_ratio = 1.0
+
+
+  ! show temperature/density profile
+  ! this plots the internal structure at single timestep
+    TRho_Profile_win_flag = .false.
+
+  ! add legend explaining colors
+    show_TRho_Profile_legend = .true.
+
+  ! display numerical info about the star
+    show_TRho_Profile_text_info = .true.
+
+  ! set window size (aspect_ratio = height/width)
+    TRho_Profile_win_width = 8
+    TRho_Profile_win_aspect_ratio = 0.75
+    
+    Grid1_win_flag = .true.
+    
+!# History Tracks
+
+   !### History_Track1
+
+      History_Track1_win_flag = .true.      
+     
+      History_Track1_title = 'Radius vs. Mass'      
+     
+      ! set default
+      History_Track1_xname = 'log_star_mass'
+      History_Track1_yname = 'log_R'
+      History_Track1_xaxis_label = 'log M/M\d\(2281)'
+      History_Track1_yaxis_label = 'log R/R\d\(2281)'
+      History_Track1_reverse_xaxis = .false.
+      History_Track1_reverse_yaxis = .false.
+     
+      ! file output
+      History_Track1_file_flag = .false.
+      History_Track1_file_dir = 'png'
+      History_Track1_file_prefix = 'track1_'
+      History_Track1_file_cnt = 5 ! output when mod(model_number,History_Track1_file_cnt)==0
+      History_Track1_file_width = -1 ! (inches) negative means use same value as for window
+      History_Track1_file_aspect_ratio = -1 ! negative means use same value as for window
+      
+!     !### Profile_Panels9
+!
+!        Profile_Panels9_win_flag = .false.
+!
+!        Profile_Panels9_title = 'Entropy Profile'
+!
+!        Profile_Panels9_xaxis_name = 'logxm'
+!        Profile_Panels9_xaxis_reversed = .true.
+!        Profile_Panels9_xmin = -12 ! only used if /= -101d0
+!        Profile_Panels9_xmax = -101d0 ! only used if /= -101d0
+!        Profile_Panels9_xmargin = 0d0
+!
+!        Profile_Panels9_num_panels = 1
+!
+!        Profile_Panels9_yaxis_name(1) = 'entropy'
+!
+!        ! file output
+!        Profile_Panels9_file_flag = .true.
+!        Profile_Panels9_file_dir = 'png'
+!        Profile_Panels9_file_prefix = 'entropy_profile_'
+!        Profile_Panels9_file_cnt = 1 ! output when mod(model_number,Profile_Panels9_file_cnt)==0
+!        Profile_Panels9_file_width = -1 ! (inches) negative means use same value as for window
+!        Profile_Panels9_file_aspect_ratio = -1 ! negative means use same value as for window
+!
+!         !### Grid9
+!         Grid9_win_flag = .true.
+!
+!         Grid9_win_width = 12
+!         Grid9_win_aspect_ratio = 0.5 ! aspect_ratio = height/width
+!
+!         Grid9_xleft = 0.05 ! fraction of full window width for margin on left
+!         Grid9_xright = 0.95 ! fraction of full window width for margin on right
+!         Grid9_ybot = 0.12 ! fraction of full window width for margin on bottom
+!         Grid9_ytop = 0.91 ! fraction of full window width for margin on top
+!         Grid9_title = 'Bildsten Minilab Plots'
+!
+!         Grid9_num_cols = 2 ! divide plotting region into this many equal width cols
+!         Grid9_num_rows = 1 ! divide plotting region into this many equal height rows
+!         Grid9_num_plots = 2 ! <= 10
+!
+!         Grid9_plot_name(:) = ''
+!         Grid9_plot_row(:) = 1 ! number from 1 at top
+!         Grid9_plot_rowspan(:) = 1 ! plot spans this number of rows
+!         Grid9_plot_col(:) =  1 ! number from 1 at left
+!         Grid9_plot_colspan(:) = 1 ! plot spans this number of columns
+!         Grid9_plot_pad_left(:) = 0.0 ! fraction of full window width for padding on left
+!         Grid9_plot_pad_right(:) = 0.0 ! fraction of full window width for padding on right
+!         Grid9_plot_pad_top(:) = 0.0 ! fraction of full window height for padding at top
+!         Grid9_plot_pad_bot(:) = 0.0 ! fraction of full window height for padding at bottom
+!         Grid9_txt_scale_factor(:) = 0.7 ! multiply txt_scale for subplot by this
+!         ! set default
+!         Grid9_num_cols = 2 ! divide plotting region into this many equal width cols
+!         Grid9_num_rows = 1 ! divide plotting region into this many equal height rows
+!         Grid9_num_plots = 2 ! <= 10
+!
+!         Grid9_plot_name(1) = 'History_Track1'
+!         Grid9_plot_row(1) = 1 ! number from 1 at top
+!         Grid9_plot_rowspan(1) = 1 ! plot spans this number of rows
+!         Grid9_plot_col(1) =  1 ! number from 1 at left
+!         Grid9_plot_colspan(1) = 1 ! plot spans this number of columns
+!         Grid9_plot_pad_left(1) = 0.0 ! fraction of full window width for padding on left
+!         Grid9_plot_pad_right(1) = 0.06 ! fraction of full window width for padding on right
+!         Grid9_plot_pad_top(1) = 0.0 ! fraction of full window height for padding at top
+!         Grid9_plot_pad_bot(1) = 0.0!9 ! fraction of full window height for padding at bottom
+!         Grid9_txt_scale_factor(1) = 1.0! multiply txt_scale for subplot by this
+!
+!         Grid9_plot_name(2) = 'Profile_Panels9'
+!         Grid9_plot_row(2) = 1 ! number from 1 at top
+!         Grid9_plot_rowspan(2) = 1 ! plot spans this number of rows
+!         Grid9_plot_col(2) =  2 ! number from 1 at left
+!         Grid9_plot_colspan(2) = 1 ! plot spans this number of columns
+!         Grid9_plot_pad_left(2) = 0.06 ! fraction of full window width for padding on left
+!         Grid9_plot_pad_right(2) = 0.00 !0.1133 ! fraction of full window width for padding on right
+!         Grid9_plot_pad_top(2) = 0.00 !0.05 ! fraction of full window height for padding at top
+!         Grid9_plot_pad_bot(2) = 0.00! 0.01 ! fraction of full window height for padding at bottom
+!         Grid9_txt_scale_factor(2) = 1.0 !0.65 ! multiply txt_scale for subplot by this
+!
+!         ! file output
+!         Grid9_file_flag = .false.
+!         Grid9_file_dir = 'png'
+!         Grid9_file_prefix = 'grid9_'
+!         Grid9_file_cnt = 5 ! output when mod(model_number,Grid9_file_cnt)==0
+!         Grid9_file_width = -1 ! (inches) negative means use same value as for window
+!         Grid9_file_aspect_ratio = -1 ! negative means use same value as for window
+!
+/ ! end of pgstar namelist

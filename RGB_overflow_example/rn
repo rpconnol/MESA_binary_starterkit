@@ -1,0 +1,9 @@
+rm -f .restart
+
+date "+DATE: %Y-%m-%d%nTIME: %H:%M:%S"
+if [[ -e star.exe ]];then
+	./star.exe
+else
+	./star_binary
+fi
+date "+DATE: %Y-%m-%d%nTIME: %H:%M:%S"

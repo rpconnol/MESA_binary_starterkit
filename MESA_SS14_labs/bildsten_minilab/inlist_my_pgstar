@@ -1,0 +1,31 @@
+&my_pgstar
+
+      my_win_flag = .true.
+
+      my_win_width = 7
+      my_win_aspect_ratio = 0.62 ! aspect_ratio = height/width
+      
+      my_xaxis = 'logxm' ! same choices as for main window xaxis_by
+      my_xaxis_reversed = .true.
+      my_xmin = -12 ! only used if > -100
+      my_xmax = -101 ! only used if > -100
+      
+      my_yaxis = 'entropy'
+      my_ymin_left = -101 ! only used if > -100
+      my_ymax_left = 50 ! only used if > -100        
+      my_dymin_left = -101 ! only used if > -100
+      
+      my_ymin_right = -101 ! only used if > -100
+      my_ymax_right = 50 ! only used if > -100        
+      my_dymin_right = -101 ! only used if > -100 
+      
+      ! file output
+      my_file_flag = .false.
+      my_file_dir = 'png'
+      my_file_prefix = 'entropy_comparison'
+      my_file_cnt = 1 ! output when mod(model_number,my_file_cnt)==0
+      my_file_width = -1 ! negative means use same value as for window
+      my_file_aspect_ratio = -1 ! negative means use same value as for window
+
+
+/ ! end of my_pgstar namelist

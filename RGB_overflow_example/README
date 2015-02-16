@@ -1,0 +1,11 @@
+RGB_overflow_example evolves a 1.5 solar mass star in a relatively close binary with a 2.0 solar mass companion. The companion is not evolved, and so is essentially treated as a point mass in the binary, which would not be unlike a black hole or neutron star. Check out inlist_project for the MESA/binary controls that define the initial binary parameters.
+
+At the beginning of the run, the evolving star is just leaving the main sequence and becoming a red giant. As it climbs the red giant branch and expands (radius continually increasing), it will overflow its Roche lobe and start losing mass to the heavier companion "star". This will occur around model number 1580 where you will see log_abs_mdot, the log10 of the mass change rate in Msun/yr, quickly rise. 
+
+As the star continues to transfer mass onto the compact companion, the binary orbit will widen and the period will increase. Since our red giant keeps evolving regardless of the mass loss, the star will keep dumping mass and widening the orbit until it sheds its entire envelope and is left as a helium white dwarf (well after model number 4000). Its path on the HR diagram should look familiar as the helium core becomes exposed and the star arcs to the left on the HR diagram before cooling over billions of years as an inert white dwarf.
+
+
+
+You may have to adjust the plots for your own machine. In inlist1 play with the Grid5_win_width and Grid5_win_aspect_ratio to get something that works best for you. Remember you can do this while MESA is running! Also included is an alternative inlist (inlist1_separateplots) that splits up some of the output into multiple windows, which may be preferred for organization and seeing the information more clearly. Just rename inlist1 as you choose and then replace it by renaming inlist1_separateplots to inlist1.
+
+[Note: Compiled and run on MESA version 7184]

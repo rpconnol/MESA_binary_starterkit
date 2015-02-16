@@ -1,0 +1,29 @@
+&binary_job
+
+   inlist_names(1) = 'inlist1' 
+   inlist_names(2) = 'inlist2'
+
+   !which_for_pgstar = 1 ! 0 means none; < 0 means all; i > 0 means star i
+   evolve_both_stars = .false.
+
+/ ! end of binary_job namelist
+
+&binary_controls
+         
+   m1 = 1.5d0  ! donor mass in Msun
+   m2 = 2.0d0  ! companion mass in Msun
+   initial_period_in_days = -2d0     ! if negative use separation in Rsuns instead
+   initial_separation_in_Rsuns = 20.0d0
+
+
+
+   !transfer efficiency controls
+   limit_retention_by_mdot_edd = .true.
+
+   max_tries_to_achieve = 100
+
+   fr = 0.05
+   fr_limit = 1d-2
+         
+/ ! end of binary_controls namelist
+
